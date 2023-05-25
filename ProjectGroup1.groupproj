@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{69642B31-2C80-482C-A46E-2E67C7BEFC91}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Project1(курсач).cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Ювелирные изделия.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Project1(курсач)">
+        <MSBuild Projects="Project1(курсач).cbproj"/>
+    </Target>
+    <Target Name="Project1(курсач):Clean">
+        <MSBuild Projects="Project1(курсач).cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project1(курсач):Make">
+        <MSBuild Projects="Project1(курсач).cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Ювелирные изделия">
+        <MSBuild Projects="Ювелирные изделия.cbproj"/>
+    </Target>
+    <Target Name="Ювелирные изделия:Clean">
+        <MSBuild Projects="Ювелирные изделия.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Ювелирные изделия:Make">
+        <MSBuild Projects="Ювелирные изделия.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Project1(курсач);Ювелирные изделия"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Project1(курсач):Clean;Ювелирные изделия:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Project1(курсач):Make;Ювелирные изделия:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
